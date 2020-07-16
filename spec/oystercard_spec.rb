@@ -29,23 +29,13 @@ describe Oystercard do
     expect { subject.touch_in station }.to raise_error("Insufficient balance!")
   end
 
-#  it "forgets the station upon touch out" do
-#    subject.top_up(Oystercard::MINIMUM_BALANCE)
-#    subject.touch_in(station)
-#    subject.touch_out(station)
-#    expect(subject.entry_station).to eq nil
-#  end
-
   it 'save an empty list by default' do
     expect(subject.journeys).to eq []
   end
 
   describe '#touch_out' do
     let(:station) {:station}
-    #it 'charges the penalty fare if there was no touch in' do
-    #  subject.top_up(Oystercard::LIMIT)
-    #  expect { subject.touch_out(station) }.to change{ subject.balance }.by(-Oystercard::PENALTY_FARE)
-    #end
+
     it 'check if oystercard is charged' do
       subject.top_up(Oystercard::MINIMUM_BALANCE)
       subject.touch_in(station)
